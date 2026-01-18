@@ -41,7 +41,9 @@ const setupAdmin = async () => {
     console.log('👑 Admin user created: admin / 123');
   }
 };
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bakery')
+const mongoURI = (process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bakery').trim();
+console.log(`DEBUG: Intentando conectar a Mongo. URI comienza con: ${mongoURI.substring(0, 15)}...`);
+mongoose.connect(mongoURI, { family: 4 }) // family:4 forces IPv4 if needed
   .then(() => {
     console.log('✅ MongoDB Connected (Toratita V2)');
     setupAdmin(); // Run setup
