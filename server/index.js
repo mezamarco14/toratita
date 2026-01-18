@@ -170,12 +170,4 @@ app.get('/api/reports/weekly', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-
-// Server Start
-const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bakery';
-mongoose.connect(mongoURI).then(() => {
-  console.log('✅ MongoDB Connected (Toratita V2)');
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Server V2 running on port ${PORT}`);
-  });
-}).catch(err => console.error(err));
+// End of Routes
